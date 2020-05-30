@@ -81,29 +81,31 @@ package body converter is
 
 	   -- Search for the start of the header ("+")
 	begin
-	   plusArray = [];  -- Initiating array in which we will store the indices of the 2 "+" signs 
-	   plusArrayIndex = 1;
-	   indexPlusSign = 1;  -- Initiating index counter
-	   for i = 1:Length(S)
-	     if S(i) != "+"
-	       indexPlusSign = indexPlusSign +1;
+	   plusArray := [];  -- Initiating array in which we will store the indices of the 2 "+" signs 
+	   plusArrayIndex := 1;
+	   indexPlusSign := 1;  -- Initiating index counter
+	   for i == 1:Length(S) in S loop
+	     if S(i) /= "+"
+	       indexPlusSign := indexPlusSign +1;
 	     else
-	       plusArray(plusArrayIndex) = indexPlusSign;
-	       plusArray = plusArray +1;
-	       indexPlusSign = indexPlusSign +1;
-	   end 
+	       plusArray(plusArrayIndex) := indexPlusSign;
+	       plusArray := plusArray +1;
+	       indexPlusSign := indexPlusSign +1;
+	     end if
+	       i := Length(S) +1;
+	   end loop
 	end
 
 	  -- Retrieving the characters between the 2 "+" signs
 	begin
-	   headerArray = [];
-	   headerArrayIndex = 1;
-	   plusIndex1 = plusArray(1);
-	   plusIndex2 = plusArray(2);
-	   for i = plusIndex1:plusIndex2
-	     headerArray(headerArrayIndex) = S(i);
+	   headerArray := [];
+	   headerArrayIndex := 1;
+	   plusIndex1 := plusArray(1);
+	   plusIndex2 := plusArray(2);
+	   for i == plusIndex1:plusIndex2 in plusArray loop
+	     headerArray(headerArrayIndex) := S(i);
 	     headerArrayIndex = headerArrayIndex +1;
-	   end
+	   end loop
 	end
 
 	  -- Concatenating header's caracters into a string

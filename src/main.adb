@@ -14,7 +14,7 @@ procedure Main is
 		socket : Socket_type;
 		Channel: Stream_access;
 	begin
-		Address.Addr := Addresses (Get_Host_By_Name (Host_Name), 1);
+		Address.Addr := Inaddr_any ;
 		Address.Port := 54320;
 		Create_socket(server);
 		Set_socket_option(server,socket_level,(reuse_address,true));
@@ -24,7 +24,7 @@ procedure Main is
 		Channel := Stream (Socket);
 		delay 0.2;
 		declare
-			Message : string(0..100) :=String'input(channel);
+			Message : string(1..10) :=String'input(channel);
 		begin
 			string'output(channel,converter.linkify(converter.italicise(converter.boldify(Message))));
 			Close_socket(Socket);

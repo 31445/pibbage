@@ -60,6 +60,7 @@ package body converter is
 			href_end:=I;
 		end if;
 	end loop;
+	return S;
    end linkify;
 
 end converter;

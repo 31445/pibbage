@@ -76,4 +76,49 @@ package body converter is
 	return S;
    end linkify;
 
+-- The following function will search for text enclosed by 2 "+" and turn them into a h1 header
+	function headerify (S: String; found:Boolean:=False) return String is
+
+	   -- Search for the start of the header ("+")
+	begin
+	   plusArray = [];  -- Initiating array in which we will store the indices of the 2 "+" signs 
+	   plusArrayIndex = 1;
+	   indexPlusSign = 1;  -- Initiating index counter
+	   for i = 1:Length(S)
+	     if S(i) != "+"
+	       indexPlusSign = indexPlusSign +1;
+	     else
+	       plusArray(plusArrayIndex) = indexPlusSign;
+	       plusArray = plusArray +1;
+	       indexPlusSign = indexPlusSign +1;
+	   end 
+	end
+
+	  -- Retrieving the characters between the 2 "+" signs
+	begin
+	   headerArray = [];
+	   headerArrayIndex = 1;
+	   plusIndex1 = plusArray(1);
+	   plusIndex2 = plusArray(2);
+	   for i = plusIndex1:plusIndex2
+	     headerArray(headerArrayIndex) = S(i);
+	     headerArrayIndex = headerArrayIndex +1;
+	   end
+	end
+
+	  -- Concatenating header's caracters into a string
+	begin
+	   concatHeader = "";
+	   for i = 1:Length(headerArray)
+	     concatHeader = concatHeader + headerArray(i);
+	   end
+	end
+
+	  -- Transforming header's text into h1
+	begin
+	   return <h1>concatheader</h1>
+	end
+	
+	end headerify
+
 end converter;

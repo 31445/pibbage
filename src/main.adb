@@ -24,7 +24,7 @@ procedure Main is
 		Channel := Stream (Socket);
 		delay 0.2;
 		declare
-			Message : string :=String'input(channel);
+			Message : string(0..100) :=String'input(channel);
 		begin
 			string'output(channel,converter.linkify(converter.italicise(converter.boldify(Message))));
 			Close_socket(Socket);

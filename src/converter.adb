@@ -25,7 +25,7 @@ package body converter is
          if S(I) = '*' then
             return S(S'First .. I-1) &
             (if found then "</i>" else "<i>") &
-              italicise(S(I+2 .. S'Last),not found);
+              italicise(S(I+1 .. S'Last),not found);
          end if;
       end loop;
       return S;

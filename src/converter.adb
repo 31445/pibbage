@@ -6,6 +6,11 @@ package converter is
          return S;
       end if;
       for I in S'Range loop
+         if S(I)='*' then
+            --TODO
+            null;
+         end if;
+      end loop;
 
    end boldify;
    -- finds things wrapped in *-s and turns them into <b></b>

@@ -1,6 +1,5 @@
 package body converter is
    function boldify(S: String;found:Boolean:=False) return String is
-      I:integer;
    begin
       if S="" then
          return S;
@@ -13,7 +12,7 @@ package body converter is
               boldify(S(I+1 .. S'Last),not found);
          end if;
       end loop;
-
+      return S;
    end boldify;
    -- finds things wrapped in *-s and turns them into <b></b>
 

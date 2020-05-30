@@ -52,19 +52,19 @@ package body converter is
 		end if;
 		if S(I) = '[' then
 			link_start:=I;
-			Put_Line(link_start'Image & ' ' & link_end'Image);
+			-- Put_Line(link_start'Image & ' ' & link_end'Image);
 		end if;
 		if link_start /= -1 and S(I) = ']' then
 			link_end:=I;
-			Put_Line(link_start'Image & ' ' & link_end'Image);
+			-- Put_Line(link_start'Image & ' ' & link_end'Image);
 		end if;
 		if link_end /= -1 and link_end = I-1 and S(I) = '(' then
 			href_start:=I;
-			Put_Line(href_start'Image & ' ' & href_end'Image);
+			-- Put_Line(href_start'Image & ' ' & href_end'Image);
 		end if;
 		if href_start /= -1 and S(I) = ')' then
 			href_end:=I;
-			Put_Line(href_start'Image & ' ' & href_end'Image);
+			-- Put_Line(href_start'Image & ' ' & href_end'Image);
 		end if;
 	end loop;
 	if href_end /= -1 then

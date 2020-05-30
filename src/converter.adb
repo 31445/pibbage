@@ -1,5 +1,5 @@
 package converter is
-   function boldify(S: String) return String is
+   function boldify(S: String,found:Boolean:=False) return String is
       I:integer;
    begin
       if S="" then
@@ -8,7 +8,7 @@ package converter is
       for I in S'Range loop
          if S(I)='*' then
             --TODO
-            null;
+            return S(S'First .. I-1) & "<b>
          end if;
       end loop;
 

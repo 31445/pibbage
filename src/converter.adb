@@ -41,7 +41,7 @@ package body converter is
 		return "";
 	end if;
 	for I in S'Range loop
-		if href_end = -1 then
+		if href_end /= -1 then
 			return S( S'First .. link_start-1) &
 				"<a href='" & S(href_start+1 .. href_end-1) & "' >" &
 				S(link_start+1 ..link_end-1) & "</a>"&

@@ -28,8 +28,8 @@ procedure Main is
 		begin
 			put_line(Message);
 			string'output(channel,Message);
-			return converter.linkify(converter.italicise(converter.boldify(Message)));
 		end;
+		return "";
 	end request;
 begin
 

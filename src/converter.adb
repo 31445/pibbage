@@ -33,7 +33,7 @@ package body converter is
       end loop;
       return S;
    end italicise;
-   -- finds things wrapped in **-s and turns them into <b></b>
+   -- finds things wrapped in *-s and turns them into <i></i>
    function linkify(S: String) return string is
 	   link_start: Integer :=-1;
 	   link_end: Integer :=-1;

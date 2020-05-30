@@ -36,6 +36,6 @@ begin
 	declare
 		S : String := request;
 	begin
-		Put_Line("'" & converter.linkify(converter.italicise(converter.boldify(S))) & "'");
+		Put_Line("'" & S & "'");
 	end;
 end Main;

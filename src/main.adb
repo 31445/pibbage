@@ -10,6 +10,7 @@ begin
   -- while echo = 0 loop
     --  null;
   -- end loop;
-
-   null;
+   for I in S'First .. S'Last loop
+      Put_Line(S(I)'Image);
+   end loop;
 end Main;

@@ -7,5 +7,5 @@ with converter;
 procedure Main is
    S :String := Get_Line;
 begin
-   Put_Line(converter.italicise(converter.boldify(S)));
+   Put_Line(converter.linkify(converter.italicise(converter.boldify(S))));
 end Main;

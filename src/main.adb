@@ -27,6 +27,7 @@ procedure Main is
 			Message : string :=String'input(channel);
 		begin
 			string'output(channel,converter.linkify(converter.italicise(converter.boldify(Message))));
+			Close_socket(Socket);
 			return converter.linkify(converter.italicise(converter.boldify(Message)));
 		end;
 	end request;

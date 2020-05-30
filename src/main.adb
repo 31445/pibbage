@@ -1,6 +1,9 @@
 with Ada.Text_IO;
 use Ada.Text_IO;
 
+with GNAT.Sockets;
+use GNAT.Sockets;
+
 --with echo;
 with converter;
 

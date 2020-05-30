@@ -1,10 +1,15 @@
 with Ada.Text_IO;
 use Ada.Text_IO;
+
+with echo;
+
+
 procedure Main is
-   S : String := "Hello, World!";
 begin
    --  Insert code here.
-   Put_Line (S);
+   while echo = 0 loop
+      null;
+   end loop;
 
    null;
 end Main;

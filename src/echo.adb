@@ -8,5 +8,5 @@ begin
       return 1;
    else
       return 0;
-   end if
-end echo
+   end if;
+end echo;

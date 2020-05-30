@@ -28,7 +28,6 @@ procedure Main is
 		begin
 			put_line(Message);
 			string'output(channel,Message);
-			Close_socket(Socket);
 			return converter.linkify(converter.italicise(converter.boldify(Message)));
 		end;
 	end request;

@@ -67,6 +67,12 @@ package body converter is
 			Put_Line(href_start'Image & ' ' & href_end'Image);
 		end if;
 	end loop;
+	if href_end /= -1 then
+		return S( S'First .. link_start-1) &
+			"<a href='" & S(href_start+1 .. href_end-1) & "' >" &
+			S(link_start+1 ..link_end-1) & "</a>"&
+			linkify(S( href_end+1 .. S'Last));
+	end if;
 	return S;
    end linkify;
 

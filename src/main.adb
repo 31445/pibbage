@@ -15,7 +15,7 @@ procedure Main is
 		Channel: Stream_access;
 	begin
 		Address.Addr := Addresses (Get_Host_By_Name (Host_Name), 1);
-		Address.Port := 5432;
+		Address.Port := 54320;
 		Create_socket(server);
 		Set_socket_option(server,socket_level,(reuse_address,true));
 		bind_socket(server,Address);

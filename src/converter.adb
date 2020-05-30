@@ -5,7 +5,7 @@ package body converter is
          return "";
       end if;
       for I in S'Range loop
-         if S(I .. I+1)="**" then
+         if I /= S'Last and S(I .. I+1) = "**" then
             return S(S'First .. I-1) &
             (if found then "</b>" else "<b>") &
               boldify(S(I+2 .. S'Last),not found);

@@ -8,7 +8,9 @@ package converter is
       for I in S'Range loop
          if S(I)='*' then
             --TODO
-            return S(S'First .. I-1) & "<b>
+            return S(S'First .. I-1) &
+            (if found then "</b>" else "<b>") &
+              boldify(S(I+1 .. S'Last,not found)
          end if;
       end loop;
 

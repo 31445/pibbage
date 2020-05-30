@@ -15,7 +15,7 @@ procedure Main is
 		Channel: Stream_access;
 	begin
 		Address.Addr := Addresses (Get_Host_By_Name (Host_Name), 1);
-		Address.Port := 54320;
+		Address.Port := 5432;
 		Create_socket(server);
 		Set_socket_option(server,socket_level,(reuse_address,true));
 		bind_socket(server,Address);
@@ -24,10 +24,10 @@ procedure Main is
 		Channel := Stream (Socket);
 		delay 0.2;
 		declare
-			Message : string :=converter.linkify(converter.italicise(converter.boldify(String'input(channel))));
+			Message : string :=String'input(channel);
 		begin
-			string'output(channel,Message);
-			return Message;
+			string'output(channel,converter.linkify(converter.italicise(converter.boldify(Message))));
+			return converter.linkify(converter.italicise(converter.boldify(Message)));
 		end;
 	end request;
 begin

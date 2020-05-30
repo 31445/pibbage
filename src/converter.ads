@@ -1,4 +1,4 @@
 package converter is
-   function boldify(S: String) return String;
+   function boldify(S: String;found:Boolean:=False) return String;
 
 end converter;

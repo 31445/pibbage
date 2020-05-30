@@ -1,5 +1,5 @@
-package converter is
-   function boldify(S: String,found:Boolean:=False) return String is
+package body converter is
+   function boldify(S: String;found:Boolean:=False) return String is
       I:integer;
    begin
       if S="" then
@@ -10,7 +10,7 @@ package converter is
             --TODO
             return S(S'First .. I-1) &
             (if found then "</b>" else "<b>") &
-              boldify(S(I+1 .. S'Last,not found)
+              boldify(S(I+1 .. S'Last),not found);
          end if;
       end loop;
 

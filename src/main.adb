@@ -33,7 +33,7 @@ procedure Main is
 begin
 
 	declare
-		S : String := Get_Line;
+		S : String := request;
 	begin
 		Put_Line(converter.linkify(converter.italicise(converter.boldify(S))));
 	end;

@@ -5,7 +5,17 @@ use Ada.Text_IO;
 with converter;
 
 procedure Main is
-   S :String := Get_Line;
 begin
-   Put_Line(converter.headerify(converter.linkify(converter.italicise(converter.boldify(S)))));
+	begin
+		loop
+			declare
+				S :String := Get_Line;
+			begin
+				Put_Line(converter.headerify(converter.linkify(converter.italicise(converter.boldify(S)))));
+			end;
+		end loop;
+	exception
+		when others =>
+			return;
+	end;
 end Main;

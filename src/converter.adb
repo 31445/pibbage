@@ -11,7 +11,7 @@ package body converter is
          if I /= S'Last and S(I) = '*' then
             if S(I+1) = '*' then
                return S(S'First .. I-1) &
-               (if found then "</b>" else "<b>") &
+               (if found then "</strong>" else "<strong>") &
                  boldify(S(I+2 .. S'Last),not found);
             end if;
          end if;
@@ -27,7 +27,7 @@ package body converter is
       for I in S'Range loop
          if S(I) = '*' then
             return S(S'First .. I-1) &
-            (if found then "</i>" else "<i>") &
+            (if found then "</em>" else "<em>") &
               italicise(S(I+1 .. S'Last),not found);
          end if;
       end loop;
@@ -78,49 +78,32 @@ package body converter is
 
 -- The following function will search for text enclosed by 2 "+" and turn them into a h1 header
 	function headerify (S: String; found:Boolean:=False) return String is
-
+		
 	   -- Search for the start of the header ("+")
 	begin
-	   plusArray := [];  -- Initiating array in which we will store the indices of the 2 "+" signs 
-	   plusArrayIndex := 1;
-	   indexPlusSign := 1;  -- Initiating index counter
-	   for i == 1:Length(S) in S loop
-	     if S(i) /= "+"
-	       indexPlusSign := indexPlusSign +1;
-	     else
-	       plusArray(plusArrayIndex) := indexPlusSign;
-	       plusArray := plusArray +1;
-	       indexPlusSign := indexPlusSign +1;
-	     end if
-	       i := Length(S) +1;
-	   end loop
-	end
+	if S="" then
+		return "";
+	end if;
+	for I in S'Range loop
+		if S(I) = '+' then
+			declare
+				num : Integer :=1;
+			begin
+				if I /= S'last then
+					while S(I+num) = '+' loop
+						num := num+1;
+						exit when I+num-1 = S'Last;
+					end loop;
+				end if;
+				return S(S'First .. I-1) &
+					(if found then "</h" else "<h")&
+					num'Image(2..num'Image'Last) & ">" &
+					headerify(S(I+num .. S'Last),not found);
+			end;
+		end if;
+	end loop;
+	return S;
 
-	  -- Retrieving the characters between the 2 "+" signs
-	begin
-	   headerArray := [];
-	   headerArrayIndex := 1;
-	   plusIndex1 := plusArray(1);
-	   plusIndex2 := plusArray(2);
-	   for i == plusIndex1:plusIndex2 in plusArray loop
-	     headerArray(headerArrayIndex) := S(i);
-	     headerArrayIndex = headerArrayIndex +1;
-	   end loop
-	end
-
-	  -- Concatenating header's caracters into a string
-	begin
-	   concatHeader = "";
-	   for i = 1:Length(headerArray)
-	     concatHeader = concatHeader + headerArray(i);
-	   end
-	end
-
-	  -- Transforming header's text into h1
-	begin
-	   return <h1>concatheader</h1>
-	end
-	
-	end headerify
+	end headerify;
 
 end converter;

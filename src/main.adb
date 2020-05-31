@@ -5,17 +5,23 @@ use Ada.Text_IO;
 with converter;
 
 procedure Main is
-begin
+	function grab_file return string is
+		c : character;
+		b : boolean;
 	begin
-		loop
+		begin
+			Get_Immediate(c,b);
 			declare
-				S :String := Get_Line;
+				S:String := (c) & grab_file;
 			begin
-				Put_Line(converter.headerify(converter.linkify(converter.italicise(converter.boldify(S)))));
+				return S;
 			end;
-		end loop;
-	exception
-		when others =>
-			return;
-	end;
+		exception
+			when others =>
+				return "";
+		end;
+	end grab_file;
+	S: string := grab_file;
+begin
+	Put_Line(converter.headerify(converter.linkify(converter.italicise(converter.boldify(S)))));
 end Main;
